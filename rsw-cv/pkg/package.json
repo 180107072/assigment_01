@@ -1,0 +1,12 @@
+{
+  "name": "rsw-cv",
+  "version": "0.0.0",
+  "files": [
+    "rsw_cv_bg.wasm",
+    "rsw_cv.js",
+    "rsw_cv.d.ts"
+  ],
+  "module": "rsw_cv.js",
+  "types": "rsw_cv.d.ts",
+  "sideEffects": false
+}
