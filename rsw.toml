@@ -1,0 +1,8 @@
+# link type: npm | yarn | pnpm, default is `npm`
+cli = "pnpm"
+
+[[crates]]
+name = "rsw-cv"
+# <npm|yarn|pnpm> link
+# ⚠️ Note: must be set to `true`, default is `false`
+link = true
