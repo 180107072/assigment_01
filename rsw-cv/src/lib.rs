@@ -13,10 +13,8 @@ extern "C" {
 }
 
 fn base64_to_dynamic_image(base64_string: &str) -> DynamicImage {
-    // Remove the data URL prefix from the Base64 string
     let base64 = base64_string.trim_start_matches("data:image/jpeg;base64,");
 
-    // Decode the Base64 string to a byte array
     let decoded = base64::decode(base64);
 
     return image::load_from_memory_with_format(&decoded.unwrap(), ImageFormat::Jpeg).unwrap();
@@ -31,6 +29,11 @@ pub fn dynamic_image_to_base64(image: &DynamicImage) -> String {
     format!("data:image/jpeg;base64,{}", res_base64)
 }
 
+/**
+ * This function calculates the size of the kernel based on the sigma value 
+ * initializes a new kernel vector with zeros 
+ * and then populates the vector with Gaussian weights
+ */
 fn generate_gaussian_kernel(sigma: f32) -> Vec<Vec<f32>> {
     let size = (6.0 * sigma).ceil() as usize;
     let mut kernel = vec![vec![0.0; size]; size];
@@ -55,6 +58,13 @@ fn generate_gaussian_kernel(sigma: f32) -> Vec<Vec<f32>> {
     kernel
 }
 
+/**
+ * This function generates a gaussian kernel using the generate_gaussian_kernel function
+ * applies the kernel to each pixel in the input image
+ * for each pixel function calculates weighted sum of neighboring pixels using the kernel 
+ * rounds the sum to the nearest integer
+ * and then writes result to the output 
+ */
 #[wasm_bindgen]
 pub fn apply_basic_gaussian(base64_img: String) -> String {
     let img = base64_to_dynamic_image(&base64_img);
@@ -113,6 +123,9 @@ pub fn apply_basic_gaussian(base64_img: String) -> String {
     return dynamic_image_to_base64(&d_image);
 }
 
+/**
+ * This function applies the inversion operation to each pixel in the input image 
+ */
 #[wasm_bindgen]
 pub fn apply_invert(base64_img: String) -> String {
     let img = base64_to_dynamic_image(&base64_img);
@@ -132,6 +145,9 @@ pub fn apply_invert(base64_img: String) -> String {
     return dynamic_image_to_base64(&output);
 }
 
+/**
+ * This function applies the flip operation to each pixel in the input image
+ */
 #[wasm_bindgen]
 pub fn apply_flip(base64_img: String) -> String {
     let img = base64_to_dynamic_image(&base64_img);
