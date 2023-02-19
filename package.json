@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "rsw watch & vite",
-		"build": "rsw build && tsc && vite build",
+		"build": "tsc && vite build",
 		"rsw": "rsw",
 		"preview": "vite preview"
 	},
