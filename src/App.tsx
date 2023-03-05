@@ -33,7 +33,7 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ url, name, onClick }) => {
   return (
     <div
       className="w-full flex flex-col shadow-zinc-900 shadow bg-zinc-800 rounded-xl overflow-hidden"
-      style={{ minHeight: "500px" }}
+      style={{ minHeight: "500px" , maxWidth: '450px', maxHeight: '800px'  }}
     >
       <p className="p-2">{name}</p>
       <div
@@ -67,7 +67,7 @@ function App() {
   const applyFlip = (image: string) => apply_flip(image);
 
   return (
-    <div className="h-screen flex gap-5 bg-zinc-600 overflow-auto text-gray-200 p-5">
+    <div className="h-screen flex flex-wrap justify-center items-center gap-5 bg-zinc-600 overflow-auto w-screen text-gray-200">
       <ImageWrapper
         url="https://picsum.photos/400/400"
         onClick={applyGaussian}
