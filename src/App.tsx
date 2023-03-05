@@ -33,11 +33,11 @@ const ImageWrapper: FC<ImageWrapperProps> = ({ url, name, onClick }) => {
   return (
     <div
       className="w-full flex flex-col shadow-zinc-900 shadow bg-zinc-800 rounded-xl overflow-hidden"
-      style={{ minHeight: "500px" , maxWidth: '450px', maxHeight: '800px'  }}
+      style={{ minHeight: "500px" , maxWidth: '350px', maxHeight: '600px'  }}
     >
       <p className="p-2">{name}</p>
       <div
-        className="overflow-hidden gap-5 p-5 w-full h-full grid grid-rows-2 grid-cols-1"
+        className="overflow-hidden  w-full h-full grid grid-rows-2 grid-cols-1"
         style={{ gridAutoRows: "1fr" }}
       >
         <div className="overflow-hidden ">
